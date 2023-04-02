@@ -20,22 +20,19 @@
 </head>
 <body>
 <!--  NAVBAR-->
-<div class="container-fluid ">
-    <dl class="row" style="padding: 0.5%; background-color: #353a3f">
-        <div class="col-11 text-left" style="margin-top: 0.2%">
-            <ul class="list-inline h5">
-                <li class="list-inline-item text-white text-strong navbar-brand"
-                    th:utext="${#authentication.name}" id="email-navbar"></li>
-                <li class="list-inline-item text-white navbar-brand">with roles:</li>
-                <li class="list-inline-item text-white navbar-brand" th:utext="${#authentication.authorities}" id="roles-navbar">
-                    <strong></strong></li>
-            </ul>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand">
+                <strong id="navbar-email" th:font="bold"></strong>
+                with roles:
+                <span id="navbar-roles"></span>
+            </a>
         </div>
-        <div style="margin-top: 0.43%"  class="col-1 h6">
-            <a class="navbar-brand text-white text-right" href="/logout">Logout</a>
-        </div>
-    </dl>
-</div><!--Navbar close -->
+        <a th:href="@{/logout}" class="float-right btn text-secondary">Logout</a>
+    </div>
+</nav>
+<!--Navbar close -->
 <div class="container-fluid">
     <div class="row">
         <div class="d-flex align-items-start">

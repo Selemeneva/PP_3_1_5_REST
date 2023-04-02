@@ -11,16 +11,15 @@ const userurl = '/api/user';
 
 const authUser = fetch(userurl).then(response => response.json())
 authUser.then(user => {
-        let roles = ''
-        user.roles.forEach(role => {
-            roles += ' '
-            roles += role.rolename
-        })
+    let roles = [];
+    for (let role of user.roles) {roles
+        roles.push(" " + role.rolename.toString()
+            .replaceAll("ROLE_", ""))
+    }
         document.getElementById("navbar-email").innerHTML = user.email
         document.getElementById("navbar-roles").innerHTML = roles
     }
 )
-
 async function getUserPage() {
     let page = await fetch(userurl);
 
@@ -35,7 +34,6 @@ function  getInformationAboutUser(user) {
     const tableBody = document.getElementById('usertbody');
     let dataHtml = '';
     let roles = [];
-    console.log('userSata', JSON.stringify(user))
     for (let role of user.roles) {roles
         roles.push(" " + role.rolename.toString()
             .replaceAll("ROLE_", ""))
