@@ -1,8 +1,6 @@
 package com.selemeneva.rest.service;
 
-import com.selemeneva.rest.model.Role;
 import com.selemeneva.rest.model.User;
-import com.selemeneva.rest.repositories.RoleRepository;
 import com.selemeneva.rest.repositories.UserRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,8 +17,8 @@ import java.util.Set;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Lazy
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
