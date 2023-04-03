@@ -4,8 +4,6 @@ import com.selemeneva.rest.model.Role;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Repository
 public class RoleRepositoryImp implements RoleRepository {
@@ -20,10 +18,5 @@ public class RoleRepositoryImp implements RoleRepository {
         entityManager.persist(role);
     }
 
-    @Override
-    public Set<Role> findAll() {
-        return (entityManager.createQuery("from Role", Role.class)
-                .getResultList()).stream().collect(Collectors.toSet());
-    }
 }
 

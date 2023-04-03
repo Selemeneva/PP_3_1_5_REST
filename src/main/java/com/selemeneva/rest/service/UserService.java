@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface UserService extends UserDetailsService {
-    Set<Role> getAllRoles();
     void add(User user);
     Set<User> getAllUsers();
     void delete(Long id);

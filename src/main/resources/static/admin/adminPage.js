@@ -11,11 +11,9 @@ setFavicons('https://javastudy.ru/wp-content/uploads/2015/04/Spring-logo.jpeg');
 const adminurl = '/api/admin';
 const currentUser = fetch(adminurl).then(response => response.json())
 currentUser.then(user => {
-        let roles = [];
-        for (let role of user.roles) {roles
-            roles.push(" " + role.rolename.toString()
-                .replaceAll("ROLE_", ""))
-        }
+    const roles = user.roles.map((role) => role.rolename.substring(5)).join(', ');
+
+
         document.getElementById("navbar-email").innerHTML = user.email
         document.getElementById("navbar-roles").innerHTML = roles
     }

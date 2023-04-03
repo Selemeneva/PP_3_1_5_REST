@@ -13,7 +13,7 @@ const authUser = fetch(userurl).then(response => response.json())
 authUser.then(user => {
     let roles = [];
     for (let role of user.roles) {roles
-        roles.push(" " + role.rolename.toString()
+        roles.push(" " + role.rolename
             .replaceAll("ROLE_", ""))
     }
         document.getElementById("navbar-email").innerHTML = user.email

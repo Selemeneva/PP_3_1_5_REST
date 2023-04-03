@@ -9,9 +9,7 @@ import java.util.Set;
 public interface UserRepository {
     @Query("select u from User u join fetch u.roles where u.email=:email")
     Optional<User> findByUsername(String email);
-
     Optional<User> findById(Long id);
-
     void deleteById(Long id);
     void save(User user);
     Set<User> findAll();

@@ -20,18 +20,13 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
     UserRepository userRepository;
-    RoleRepository roleRepository;
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Lazy
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-    @Override
-    public Set<Role> getAllRoles() {return roleRepository.findAll();}
 
     @Override
     @Transactional

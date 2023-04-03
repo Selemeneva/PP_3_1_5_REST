@@ -14,7 +14,6 @@ import java.util.Set;
 @RequestMapping("api/admin")
 public class AdminRESTController {
     private final UserService userService;
-
     public AdminRESTController(UserService userService) {
         this.userService = userService;
     }
@@ -27,10 +26,10 @@ public class AdminRESTController {
         return new ResponseEntity<> (userService.getById(id), HttpStatus.OK);
     }
     @PostMapping()
-    public ResponseEntity<HttpStatus> saveNewUser(
+    public ResponseEntity<User> saveNewUser(
             @RequestBody User user) {
         userService.add(user);
-        return new ResponseEntity<> (HttpStatus.OK);
+        return new ResponseEntity<> (user, HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Long id) {
@@ -39,10 +38,9 @@ public class AdminRESTController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<HttpStatus> userSaveEdit(@RequestBody @NotNull User user, @PathVariable Long id) {
+    public ResponseEntity<User> userSaveEdit(@RequestBody @NotNull User user, @PathVariable Long id) {
         user.setId(id);
-        System.out.println(user);
         userService.update(user, id);
-        return new ResponseEntity<> (HttpStatus.OK);
+        return new ResponseEntity<> (user, HttpStatus.OK);
     }
 }
